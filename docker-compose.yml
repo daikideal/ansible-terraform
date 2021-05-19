@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  ansible:
+    build: ./ansible
+    container_name: ansible
+    volumes: 
+      - ./ansible:/usr/src/ansible
+  terraform:
+    image: hashicorp/terraform:0.15.3
+    container_name: terraform
+    volumes: 
+      - ./terraform:/usr/src/terraform
+    working_dir: /usr/src/terraform
+    env_file: ./terraform/.env
